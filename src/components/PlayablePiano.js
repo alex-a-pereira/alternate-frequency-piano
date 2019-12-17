@@ -23,7 +23,7 @@ export class PlayablePiano extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: MusicNote.rangeToNotesObject('A440', firstNote, lastNote)
+      notes: MusicNote.rangeToNotesObject('A432', firstNote, lastNote)
     };
   }
 
