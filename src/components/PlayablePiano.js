@@ -11,6 +11,10 @@ const PianoContainer = styled.div`
   margin: auto;
 `;
 
+const CenteredPiano = styled(Piano)`
+  margin: auto;
+`;
+
 const firstNote = MidiNumbers.fromNote('c3');
 const lastNote = MidiNumbers.fromNote('c5');
 const keyboardShortcuts = KeyboardShortcuts.create({
@@ -48,7 +52,7 @@ export class PlayablePiano extends React.Component {
             />
           );
         })}
-        <Piano
+        <CenteredPiano
           noteRange={{ first: firstNote, last: lastNote }}
           playNote={this.playNote}
           stopNote={this.stopNote}
