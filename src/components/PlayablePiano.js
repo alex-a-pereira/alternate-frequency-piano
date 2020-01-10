@@ -7,6 +7,7 @@ import 'react-piano/dist/styles.css';
 import MusicNote from '../lib/music_note';
 
 const PianoContainer = styled.div`
+  padding-top: 36px;
   margin: auto;
 `;
 

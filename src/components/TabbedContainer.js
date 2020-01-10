@@ -24,7 +24,7 @@ const TuningListItem = (props) => {
 export const TabbedContainer = (props) => {
   const [activeTuning, setActiveTuning] = useState('A440');
 
-  const { name, description_paragraphs } = all_tunings[activeTuning];
+  const { name, descriptions, popular_songs } = all_tunings[activeTuning];
 
   // sort to preserve some kind of predictable order
   const tunings = Object.keys(all_tunings || {}).sort();
@@ -50,8 +50,24 @@ export const TabbedContainer = (props) => {
         </div>
         <ContentContainer>
           <Header as="h2">{`Now playing in ${name}.`}</Header>
-          {(description_paragraphs || []).map((p, idx) => {
+          {(descriptions || []).map((p, idx) => {
             return <p key={idx}>{p}</p>;
+          })}
+          {/* conditionally display popular songs header */}
+          {(popular_songs || []).length ? (
+            <Header>Popular Songs tuned to {name}</Header>
+          ) : null}
+          {/* render a popular songs section for each popular song */}
+          {(popular_songs || []).map((ps, idx) => {
+            const { name, artist, youtube_url } = ps;
+            return (
+              <p key={idx}>
+                <b>{artist}</b> -
+                <a href={youtube_url} target="__blank">
+                  {name}
+                </a>
+              </p>
+            );
           })}
         </ContentContainer>
       </Segment>
