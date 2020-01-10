@@ -44,7 +44,7 @@ export const TabbedContainer = (props) => {
         })}
       </Menu>
 
-      <Segment>
+      <Segment raised>
         <div>
           <PlayablePiano tuning={activeTuning} />
         </div>
