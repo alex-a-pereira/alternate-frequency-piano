@@ -7,7 +7,6 @@ import 'react-piano/dist/styles.css';
 import MusicNote from '../lib/music_note';
 
 const PianoContainer = styled.div`
-  width: 80%;
   margin: auto;
 `;
 
@@ -16,7 +15,7 @@ const CenteredPiano = styled(Piano)`
 `;
 
 const firstNote = MidiNumbers.fromNote('c3');
-const lastNote = MidiNumbers.fromNote('c5');
+const lastNote = MidiNumbers.fromNote('f4');
 const keyboardShortcuts = KeyboardShortcuts.create({
   firstNote: firstNote,
   lastNote: lastNote,
@@ -27,7 +26,17 @@ export class PlayablePiano extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: MusicNote.rangeToNotesObject('A432', firstNote, lastNote)
+      notes: MusicNote.rangeToNotesObject(
+        this.props.tuning,
+        firstNote,
+        lastNote
+      )
+    };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      notes: MusicNote.rangeToNotesObject(nextProps.tuning, firstNote, lastNote)
     };
   }
 
@@ -56,7 +65,7 @@ export class PlayablePiano extends React.Component {
           noteRange={{ first: firstNote, last: lastNote }}
           playNote={this.playNote}
           stopNote={this.stopNote}
-          width={1000}
+          width={800}
           keyboardShortcuts={keyboardShortcuts}
         />
       </PianoContainer>
