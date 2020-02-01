@@ -3,6 +3,7 @@ import { Menu, Segment, Container, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import { PlayablePiano } from './PlayablePiano';
+import { PopularSong } from './PopularSong';
 
 import { all_tunings } from '../lib/all_tunings.js';
 
@@ -33,9 +34,10 @@ export const TabbedContainer = (props) => {
     <Container>
       <Menu pointing>
         <Menu.Item header>Tunings</Menu.Item>
-        {tunings.map((tuning) => {
+        {tunings.map((tuning, idx) => {
           return (
             <TuningListItem
+              key={idx}
               tuning={tuning}
               activeTuning={activeTuning}
               setTuning={setActiveTuning}
@@ -61,12 +63,12 @@ export const TabbedContainer = (props) => {
           {(popular_songs || []).map((ps, idx) => {
             const { name, artist, youtube_url } = ps;
             return (
-              <p key={idx}>
-                <b>{artist}</b> -
-                <a href={youtube_url} target="__blank">
-                  {name}
-                </a>
-              </p>
+              <PopularSong
+                key={idx}
+                artist={artist}
+                youtube_url={youtube_url}
+                name={name}
+              />
             );
           })}
         </ContentContainer>
