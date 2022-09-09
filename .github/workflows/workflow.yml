@@ -18,9 +18,9 @@ jobs:
             node-version: ${{ matrix.node-version }}
             cache: 'npm'
         - name: Install dependencies
-          run: yarn install
+          run: export NODE_OPTIONS=--openssl-legacy-provider && yarn install
         - name: Build
-          run: yarn build
+          run: export NODE_OPTIONS=--openssl-legacy-provider && yarn build
         - name: Deploy
           uses: reggionick/s3-deploy@v3
           with:
