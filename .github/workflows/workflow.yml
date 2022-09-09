@@ -27,7 +27,7 @@ jobs:
         - name: Deploy
           uses: reggionick/s3-deploy@v3
           with:
-            folder: public
+            folder: build
             bucket-region: us-east-1
             # deployment is set up in the aws-infra repo, you'll wanna get these values from cloudformation
             bucket: alternative-piano.alexpereira.systems-production
