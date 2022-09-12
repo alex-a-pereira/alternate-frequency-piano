@@ -30,8 +30,8 @@ jobs:
             folder: build
             bucket-region: us-east-1
             # deployment is set up in the aws-infra repo, you'll wanna get these values from cloudformation
-            bucket: alternative-piano.alexpereira.systems-production
-            dist-id: E1IDS5YRFPYXCO
+            bucket: alternativepiano.com-production
+            dist-id: E3VRY0JF2WM6XA
             invalidation: /
             delete-removed: true
             no-cache: true
